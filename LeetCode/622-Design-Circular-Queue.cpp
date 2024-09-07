@@ -1,3 +1,7 @@
+/*
+By   :-: savetrees
+Used :-: Arrays
+*/
 class MyCircularQueue {
 public:
     int *son, front, rear, size;
