@@ -1,6 +1,6 @@
 /*
 By   :-: savetrees
-Used :-:
+Used :-: Basic Searching
 */
 class Solution {
 public:
