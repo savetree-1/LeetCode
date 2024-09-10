@@ -1,3 +1,7 @@
+/*
+By   :-: savetrees
+Used :-: Linked Lists
+*/
 class Solution {
 public:
     int gcd(int a, int b) {while(b){int r=a%b;a=b;b=r;}return a;}
