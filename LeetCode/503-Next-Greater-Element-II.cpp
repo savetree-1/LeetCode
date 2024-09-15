@@ -1,22 +1,13 @@
 /*
 By   :-: savetrees
-Used :-: Brute Force
+Used :-: Monotonic Stack
 */
 class Solution {
 public:
-    vector< int> nextGreaterElements(vector<  int>& nums) {
-      vector< int>son(nums.size());
-      if(nums.size()==1)return {-1};
-      for( int i=0;i<nums.size();i++)
-        {
-          for( int j=i+1;j<2*nums.size()-1;j++)
-          {
-            if(nums[j%nums.size()]>nums[i])
-            {son[i]=nums[j%nums.size()];break;}
-            else 
-            son[i]=-1;
-          }
-        }
-        return son;
-    }
-};
+    vector<int> nextGreaterElements(vector<int>& nums) {
+        int n = nums.size();vector<int> son(n, -1);stack<int> st;
+        for (int i = 2 * n - 1; i >= 0; i--) {
+            while (!st.empty() && st.top() <= nums[i % n]) st.pop();
+            if (i < n) son[i] = !st.empty() ? st.top() : -1;
+            st.push(nums[i % n]);}
+        return son;}};
