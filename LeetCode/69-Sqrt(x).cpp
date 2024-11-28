@@ -6,7 +6,7 @@ class Solution {
 public:
     long long int bs(int n)
     {
-        long long int low=0,high=n,mid=low+(high-low)/2;
+        long long int low=0,high=n,mid=(low+high)/2;
         long long int ans=-1;
         while(low<=high)
         {
@@ -23,7 +23,7 @@ public:
             {
                 high=mid-1;
             }
-            mid=low+(high-low)/2;
+            mid=(low+high)/2;
         }
         return ans;
     }
