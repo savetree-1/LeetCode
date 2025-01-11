@@ -1,3 +1,7 @@
+/*
+By   :-: savetrees
+Used :-: Linked List
+*/
 class Solution {
 public:
     ListNode* reverseList(ListNode* head) {
