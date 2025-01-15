@@ -1,24 +1,25 @@
 /*
 By  :-: savetrees
-Used:-: Linked List
+Used:-: Monotonic Stack
 */
 class Solution {
 public:
-    vector<int> nextLargerNodes(ListNode* head){
-        vector<int>dummy;
-        ListNode*temp=head;
-        while (temp!=NULL){
-            ListNode*iter=temp->next;
-            while (iter!=NULL&&iter->val<=temp->val){
-                iter=iter->next;
-            }
-            if(iter!=NULL){
-                dummy.push_back(iter->val);
-            } else{
-                dummy.push_back(0);
-            }
-            temp=temp->next;
+    vector<int> nextLargerNodes(ListNode* h) {
+        vector<int> v, r;
+        ListNode* c = h;
+        while (c) {
+            v.push_back(c->val);
+            c = c->next;
         }
-        return dummy;
+        r = vector<int>(v.size(), 0);
+        stack<int> s;
+        for (int i = 0; i < v.size(); ++i) {
+            while (!s.empty() && v[s.top()] < v[i]) {
+                r[s.top()] = v[i];
+                s.pop();
+            }
+            s.push(i);
+        }
+        return r;
     }
 };
