@@ -1,4 +1,7 @@
-
+/*
+By   :-: savetrees
+Used :-: Linked List
+*/
 class Solution {
 public:
     ListNode* find_mid(ListNode*head){
