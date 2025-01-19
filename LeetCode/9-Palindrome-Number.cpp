@@ -1,3 +1,7 @@
+/*
+By  :-: savetrees
+Used:-: Loops
+*/
 class Solution {
 public:
     bool isPalindrome(int x) {
