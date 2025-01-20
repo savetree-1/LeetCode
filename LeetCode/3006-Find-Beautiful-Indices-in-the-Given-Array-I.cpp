@@ -1,6 +1,6 @@
 /*
 By  :-: savetrees
-Used:-: Linear Search
+Used:-: 2 Ptr
 */
 
 class Solution {
@@ -30,8 +30,6 @@ public:
             i++;
         } else {
             j++;
-        }
-    }
+        }}
 return final;
-}
-};
+}};
