@@ -1,3 +1,8 @@
+ /*
+By  :-: savetrees
+Used:-: Linked List
+*/
+
 struct ListNode *getIntersectionNode(struct ListNode *headA, struct ListNode *headB) { 
    if (headA==NULL||headB==NULL)return NULL;
   struct ListNode*temp1=headA; struct ListNode*temp2=headB;
