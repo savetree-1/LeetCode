@@ -1,18 +1,26 @@
 /*
 By   :: savetrees
-Used :: Straight Forward Approach
+Used :: Binary Search
 */
 class Solution {
 public:
     int hIndex(vector<int>& citations) {
         int n=citations.size();
         int h=0;
-        for(int i=0;i<n;i++) {
-            int count=n-i;
-            if(citations[i]>=count)
+        int low=0;
+        int high=n-1;
+        while(low<=high)
+        {
+            int mid=low+(high-low)/2;
+            int count=n-mid;
+            if(citations[mid]>=count)
             {
                 h=count;
-                break;
+                high=mid-1;
+            }
+            else
+            {
+                low=mid+1;
             }
         }
         return h;
