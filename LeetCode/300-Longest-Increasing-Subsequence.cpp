@@ -1,21 +1,18 @@
-/*
-Us Vi So
+/* 
 By   :: savetrees
-Used :: Dynamic Programming
+Used :: DP + BS
 */
 class Solution {
 public:
     int lengthOfLIS(vector<int>& nums) {
-        int n=nums.size();
-        vector<int>dp(n,1);
-        for(int i=0;i<n;i++)
-        {
-            for(int j=0;j<i;j++)
-            {
-                if(nums[i]>nums[j])
-                dp[i]=max(dp[i],dp[j]+1);
-            }
-        }
-        return *max_element(dp.begin(),dp.end());
-    }
-};
+    if (nums.empty()) return 0;
+    vector<int>subseq;
+    for (int num:nums) {
+        auto it=lower_bound(subseq.begin(),subseq.end(),num);
+        if (it==subseq.end()) {
+            subseq.push_back(num);
+        } else {
+            *it=num;
+        }}
+    return subseq.size();
+}};
