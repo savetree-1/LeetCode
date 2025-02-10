@@ -1,19 +1,22 @@
 /*
 By   :: savetrees
-Used :: Recursive Method
+Used :: Iterative Method
 */
 class Solution {
 public:
-    void auxi(TreeNode* root, vector<int>&dummy)
-    {
-        if(!root)return ;
-        dummy.push_back(root->val);
-        auxi(root->left,dummy);
-        auxi(root->right,dummy);
-    }
     vector<int> preorderTraversal(TreeNode* root) {
-        vector<int>dummy;
-        auxi(root,dummy);
-        return dummy;
+        vector<int>pre_order;
+        if(!root)return pre_order;
+        stack<TreeNode*>st;
+        st.push(root);
+        while(!st.empty())
+        {
+            root=st.top();
+            st.pop();
+            pre_order.push_back(root->val);
+            if(root->right!=NULL)st.push(root->right);
+            if(root->left!=NULL)st.push(root->left); 
+        }
+        return pre_order;
     }
 };
