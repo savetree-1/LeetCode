@@ -1,19 +1,29 @@
 /*
 By   :: savetrees
-Used :: Recursive In-Order Traversal
+Used :: Iterative In-Order Traversal
 */
 class Solution {
 public:
-    void inorder(TreeNode* root,vector<int>&dummy)
-    {
-        if(root==NULL)return ;
-        inorder(root->left,dummy);
-        dummy.push_back(root->val);
-        inorder(root->right,dummy);
-    }
     vector<int> inorderTraversal(TreeNode* root) {
-        vector<int>dummy;
-        inorder(root,dummy);
-        return dummy;
+        stack<TreeNode*>st;
+        TreeNode* temp=root;
+        vector<int>in_order;
+        while(temp!=NULL | !st.empty())
+        {
+            if(temp!=NULL)
+            {
+                st.push(temp);
+                temp=temp->left;
+            }
+            else
+            {
+                if(st.empty())break;
+                temp=st.top();
+                st.pop();
+                in_order.push_back(temp->val);
+                temp=temp->right;
+            }
+        }
+        return in_order;
     }
 };
