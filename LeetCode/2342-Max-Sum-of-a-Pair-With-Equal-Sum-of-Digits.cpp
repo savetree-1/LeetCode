@@ -1,35 +1,29 @@
 /*
 By   :: savetrees
-Used :: Map & Sorting
+Used :: In place Addition of Max in Unordered Map
 */
 class Solution {
 public:
-    int sum(int num)
-    {
+    int sum(int num){
         int sum=0;
-        while(num!=0)
-        {
+        while (num!=0){
             sum+=num%10;
-            num=num/10;
+            num/=10;
         }
         return sum;
     }
     int maximumSum(vector<int>& nums) {
-        unordered_map<int,vector<int>>mpp;
-        for(int i:nums)
-        {
-            mpp[sum(i)].push_back(i);            
-        }
+        unordered_map<int,int> mpp;
         int maxi=-1;
-        for(auto& pair:mpp)
-        {
-            vector<int>&numbers=pair.second;
-            if(numbers.size()>=2)
-            {
-                sort(numbers.begin(),numbers.end(),greater<int>());
-                maxi=max(maxi,numbers[0]+numbers[1]);
+        for (int i:nums) {
+            int dummy=sum(i);
+            if (mpp.find(dummy)!=mpp.end()) {
+                maxi=max(maxi,mpp[dummy]+i);
+                mpp[dummy]=max(mpp[dummy],i);
+            } else {
+                mpp[dummy]=i;
             }
         }
-    return maxi;
+        return maxi;
     }
 };
