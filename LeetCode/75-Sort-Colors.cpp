@@ -1,6 +1,6 @@
 /*
 By   :: savetrees
-Used :: Bubble Sort
+Used :: Selection Sort
 */
 class Solution {
 public:
@@ -8,11 +8,15 @@ public:
         int n=nums.size();
         for(int i=0;i<n-1;i++)
         {
-            for(int j=0;j<n-i-1;j++)
+            int mini=i;
+            for(int j=i+1;j<n;j++)
             {
-                if(nums[j]>nums[j+1])
-                swap(nums[j],nums[j+1]);
+                if(nums[j]<nums[mini])
+                {
+                    mini=j;
+                }
             }
+            swap(nums[i],nums[mini]);
         }
     }
 };
