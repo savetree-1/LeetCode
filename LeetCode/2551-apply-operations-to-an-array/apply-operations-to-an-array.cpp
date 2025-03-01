@@ -1,3 +1,7 @@
+/*
+By   :: savetrees
+Used :: Straight Forward using Extra Space
+*/
 class Solution {
 public:
     vector<int> applyOperations(vector<int>& nums) {
