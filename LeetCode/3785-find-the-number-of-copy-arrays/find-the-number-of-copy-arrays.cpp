@@ -1,3 +1,7 @@
+/*
+By   :: savetrees
+Used :: Greedy
+*/
 class Solution {
 public:
     int getValidRange(vector<int>& original, vector<vector<int>>& bounds) {
