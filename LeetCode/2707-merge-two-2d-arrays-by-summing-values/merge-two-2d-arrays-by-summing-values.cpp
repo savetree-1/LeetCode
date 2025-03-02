@@ -1,27 +1,19 @@
 /*
 By   :: savetrees
-Used :: Hashmap
+Used :: 2-Pointer Merging
 */
 class Solution {
 public:
-    vector<vector<int>> mergeArrays(vector<vector<int>>& nums1, vector<vector<int>>& nums2) {
-        map<int,int>mpp;
-        for(int i=0;i<nums1.size();i++)
-        {
-            mpp[nums1[i][0]] += nums1[i][1];
+    vector<vector<int>> mergeArrays(vector<vector<int>>&a,vector<vector<int>>&b){
+        vector<vector<int>>r;
+        int i=0,j=0;
+        while(i<a.size()&&j<b.size()){
+            if(a[i][0]==b[j][0])r.push_back({a[i][0],a[i][1]+b[j][1]}),i++,j++;
+            else if(a[i][0]<b[j][0])r.push_back(a[i++]);
+            else r.push_back(b[j++]);
         }
-        for(int i=0;i<nums2.size();i++)
-        {
-            mpp[nums2[i][0]] += nums2[i][1];
-        }
-        vector<vector<int>>arr;
-        for(auto pair:mpp)
-        {
-            vector<int>dummy;
-            dummy.push_back(pair.first);
-            dummy.push_back(pair.second);
-            arr.push_back(dummy);
-        }
-        return arr;
+        while(i<a.size())r.push_back(a[i++]);
+        while(j<b.size())r.push_back(b[j++]);
+        return r;
     }
 };
