@@ -1,21 +1,18 @@
 /*
 By   :: savetrees
-Used :: Optimal using Extra Space
+Used :: Using Dutch National Flag ALgorithm 
 */
 class Solution {
 public:
     vector<int> pivotArray(vector<int>& nums, int pivot) {
-        vector<int> dummy(nums.size());
-        int left=0,right=nums.size()-1,cnt=0;
-        for (int num:nums) {
-            if (num<pivot)dummy[left++]=num;
-            else if(num==pivot)cnt++;
-        }
-        int mid=left;
-        while(cnt--)dummy[left++]=pivot;
-        for (int num:nums) {
-            if(num>pivot)dummy[left++]=num;
-        }
-        return dummy;
+        int n = nums.size(), i = 0, j = 0, k = 0;
+        vector<int> temp(n);
+        for (int x : nums) if (x < pivot) temp[i++] = x;
+        for (int x : nums) if (x == pivot) temp[i++] = x;
+        for (int x : nums) if (x > pivot) temp[i++] = x;
+        for (; k < n; k++) nums[k] = temp[k];
+        return nums;
     }
 };
+
+
