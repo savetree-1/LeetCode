@@ -1,5 +1,6 @@
 /*
-
+By   :: savetrees
+Used :: Binary Search
 */
 class Solution {
 public:
