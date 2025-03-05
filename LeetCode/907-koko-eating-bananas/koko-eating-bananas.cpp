@@ -8,7 +8,7 @@ public:
     ll check(vector<int>&piles,int h,int mini)
     {
         ll cnt=0;
-        for(int num:piles)cnt+=ceil((double)num/mini);
+        for(int num:piles)cnt+=(num+mini-1)/mini;
         return cnt;
     }
     int minEatingSpeed(vector<int>& piles, int h) {
