@@ -7,21 +7,21 @@ class Solution {
 public:
     vector<int> findMissingAndRepeatedValues(vector<vector<int>>& grid) {
         int size=grid.size();
-        ll expectedSum=0,expectedSquareSum=0,actualSum=0,actualSquareSum = 0;
+        ll sum_1=0,sumsq_1=0,sum_2=0,sumsq_2=0;
         for(int i=1;i<=size*size;i++) {
-            expectedSum+=i;
-            expectedSquareSum+=(long long)i*i;
+            sum_1+=i;
+            sumsq_1+=(ll)i*i;
         }
         for(auto& row:grid)
-            for(int num:row) {
-                actualSum+=num;
-                actualSquareSum+=(long long)num*num;
+            for(int num:row){
+                sum_2+=num;
+                sumsq_2+=(ll)num*num;
             }
-        long long diffSum=actualSum-expectedSum,
-                  diffSquareSum=actualSquareSum-expectedSquareSum,
-                  sumValues=diffSquareSum/diffSum;
-        int repeatedValue=(diffSum+sumValues)/2,
-            missingValue=sumValues-repeatedValue;
-        return {repeatedValue, missingValue};
+        ll diff_sum=sum_2-sum_1,
+                  diffsq_sum=sumsq_2-sumsq_1,
+                  sumValues=diffsq_sum/diff_sum;
+        int reptd=(diff_sum+sumValues)/2,
+            missing=sumValues-reptd;
+        return {reptd,missing};
     }
 };
