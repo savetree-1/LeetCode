@@ -1,27 +1,29 @@
-/*
-By   :: savetrees
-Used :: Maths
-*/
 typedef long long ll;
 class Solution {
 public:
     vector<int> findMissingAndRepeatedValues(vector<vector<int>>& grid) {
-        int size=grid.size();
-        ll expectedSum=0,expectedSquareSum=0,actualSum=0,actualSquareSum = 0;
-        for(int i=1;i<=size*size;i++) {
-            expectedSum+=i;
-            expectedSquareSum+=(long long)i*i;
+        ll total=grid.size();
+        ll sum1=0;
+        ll sq_sum1=0;
+        ll rsum1=0;
+        ll rsq_sum1=0;
+        for(int i=1;i<=total*total;i++)
+        {
+            sum1+=i;
+            sq_sum1+=i*i;
         }
-        for(auto& row:grid)
-            for(int num:row) {
-                actualSum+=num;
-                actualSquareSum+=(long long)num*num;
+        for(auto &arr:grid)
+        {
+            for(int num:arr)
+            {
+                rsum1+=num;
+                rsq_sum1+=num*num;
             }
-        long long diffSum=actualSum-expectedSum,
-                  diffSquareSum=actualSquareSum-expectedSquareSum,
-                  sumValues=diffSquareSum/diffSum;
-        int repeatedValue=(diffSum+sumValues)/2,
-            missingValue=sumValues-repeatedValue;
-        return {repeatedValue, missingValue};
+        }
+        ll sum_diff=sum1-rsum1;
+        ll sq_sum_diff=sq_sum1-rsq_sum1;
+        int a=(sum_diff+(sq_sum_diff/sum_diff))/2;
+        int b=abs(a-sum_diff);
+        return {b,a};
     }
 };
