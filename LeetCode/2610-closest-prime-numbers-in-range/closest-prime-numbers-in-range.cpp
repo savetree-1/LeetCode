@@ -1,3 +1,7 @@
+/*
+By   :: savetrees
+Used :: Brute Force
+*/
 class Solution {
 public:
     bool isPrime(int num) {
