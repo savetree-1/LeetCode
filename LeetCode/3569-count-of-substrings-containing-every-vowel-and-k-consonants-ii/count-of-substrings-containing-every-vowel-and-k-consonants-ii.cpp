@@ -1,3 +1,7 @@
+/*
+By   :: savetrees
+Used :: HashMap + Sliding Window
+*/
 class Solution {
 public:
     long long countOfSubstrings(string word, int k) {
