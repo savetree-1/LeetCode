@@ -1,3 +1,7 @@
+/*
+By   :: savetrees
+Used :: Sliding Window
+*/
 class Solution {
 public:
     int numberOfSubstrings(string s) {
