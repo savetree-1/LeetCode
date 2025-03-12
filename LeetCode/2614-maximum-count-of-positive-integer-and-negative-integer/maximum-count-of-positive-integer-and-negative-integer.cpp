@@ -1,3 +1,7 @@
+/*
+By   :: savetrees
+Used :: Binary Search
+*/
 class Solution{  
 public:  
     int maximumCount(vector<int>&nums){  
