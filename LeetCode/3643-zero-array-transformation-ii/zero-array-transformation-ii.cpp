@@ -1,3 +1,7 @@
+/*
+By   :: savetrees
+Used :: Difference Array & Binary Search
+*/
 class Solution {
 public:
     int minZeroArray(vector<int>& nums, vector<vector<int>>& queries) {
