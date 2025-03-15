@@ -1,3 +1,7 @@
+/*
+By   :: savetrees
+Used :: Binary Search
+*/
 class Solution {
 public:
     bool canRob(vector<int>& nums, int k, int cap) {
