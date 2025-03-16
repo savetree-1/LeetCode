@@ -1,6 +1,6 @@
 /*
 By   :: savetrees
-Used :; Binary Search
+Used :: Binary Search
 */
 typedef long long int ll;
 class Solution {
