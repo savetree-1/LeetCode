@@ -1,3 +1,7 @@
+/*
+By   :: savetrees
+Used :; Binary Search
+*/
 typedef long long int ll;
 class Solution {
     long long tot_cars(long long min, vector<int>& ranks){
@@ -11,7 +15,6 @@ public:
     long long repairCars(vector<int>& ranks, int cars) {
         ll low = 1;
         ll high = *max_element(ranks.begin(), ranks.end()) * 1LL * cars * cars;
-
         while (low <= high) {
             ll mid = (low + high) / 2;
             if (tot_cars(mid, ranks) >= cars)
