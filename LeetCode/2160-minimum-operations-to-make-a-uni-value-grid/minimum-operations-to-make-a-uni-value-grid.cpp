@@ -1,7 +1,11 @@
+/*
+By   :: savetrees
+Used :: Median Based Approach
+*/
 class Solution {
 public:
     int minOperations(vector<vector<int>>& grid, int x) {
-        vector<int> nums;
+        vector<int>nums;
         for(auto &row:grid)
             for(auto &cell:row)
                 nums.push_back(cell);
