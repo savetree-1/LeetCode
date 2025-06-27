@@ -9,7 +9,7 @@ public:
             max_len = max(max_len, static_cast<int>(word.size()));
         }
         for (int i = 1; i <= n; i++) {
-            for (int j = i - 1; j >=(i - max_len - 1, 0); j--) {
+            for (int j = i - 1; j >=max(i - max_len - 1, 0); j--) {
                 if (dp[j] && find(wordDict.begin(), wordDict.end(), s.substr(j, i - j)) != wordDict.end()) {
                     dp[i] = true;
                     break;
