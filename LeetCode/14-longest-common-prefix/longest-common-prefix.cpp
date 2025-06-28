@@ -1,3 +1,7 @@
+/*
+By   :: savetrees
+Used :: Straight Forward
+*/
 class Solution {
 public:
     string longestCommonPrefix(vector<string>& strs) {
