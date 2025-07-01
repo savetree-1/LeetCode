@@ -1,11 +1,13 @@
+/*
+By   :: savetrees
+Used :: Subset sum with Target Concept / Backtracking
+*/
 typedef vector<int> vi;
 class Solution {
 public:
     int findTargetSumWays(vi& nums, int target) {
-        int total = 0;
-        for(int x : nums) total += x;
+        int total=accumulate(nums.begin(),nums.end(),0);
         if((target + total) % 2 != 0 || abs(target) > total) return 0;
-
         int subsetSum = (target + total) / 2;
         return func(nums, 0, subsetSum);
     }
