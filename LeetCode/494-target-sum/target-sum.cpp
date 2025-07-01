@@ -10,16 +10,18 @@ public:
         int total=accumulate(nums.begin(),nums.end(),0);
         if((target+total)%2!=0||abs(target) > total) return 0;
         int subsetSum=(target+total)/2;
-        vvi memo(nums.size()+1,vi(subsetSum+1,-1));
-        return func(nums, 0, subsetSum,memo);
+        return func(nums,subsetSum);
     }
-    int func(vi &arr, int index, int rem,vvi &memo) {
-        if(index==arr.size())return rem==0?1:0;
-        if(memo[index][rem]!=-1)return memo[index][rem];
-        int inc=0;
-        if(arr[index] <= rem)
-            inc=func(arr, index + 1, rem - arr[index],memo);
-        int exc=func(arr, index + 1, rem,memo);
-        return memo[index][rem]=inc+exc;
+    int func(vi &arr, int target) {
+        vi dp(target+1,0);
+        dp[0]=1;
+        for(int num:arr)
+        {
+            for(int j=target;j>=num;j--)
+            {
+                dp[j]+=dp[j-num];
+            }
+        }
+        return dp[target];
     }
 };
