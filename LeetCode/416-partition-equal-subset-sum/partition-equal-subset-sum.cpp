@@ -1,6 +1,6 @@
 /*
 By   ::
-Used :: Backtracking
+Used :: Memoization
 */
 typedef unordered_map<string,bool> mp;
 class Solution {
