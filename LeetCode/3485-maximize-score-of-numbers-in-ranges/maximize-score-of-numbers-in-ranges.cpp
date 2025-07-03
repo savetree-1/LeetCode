@@ -1,5 +1,5 @@
 /*
-By   ::
+By   :: savetrees
 Used :: Binary Search
 */
 class Solution {
@@ -14,7 +14,6 @@ class Solution {
         }
         return true;
     }
-    
 public:
     int maxPossibleScore(vector<int>& start, int d) {
         sort(start.begin(), start.end());
