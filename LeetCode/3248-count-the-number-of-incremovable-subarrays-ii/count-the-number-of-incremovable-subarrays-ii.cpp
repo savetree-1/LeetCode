@@ -1,3 +1,7 @@
+/*
+By    ::
+Used  :: Binary Search
+*/
 #define ll long long
 class Solution {
 public:
