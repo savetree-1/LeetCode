@@ -2,9 +2,9 @@ class Solution {
 public:
     bool check(vector<int>& piles,int h,int k) {
         if(k<=0)return false;
-        long long  hours=0;
+        long long hours=0;
         for (int num:piles)
-            hours+=(num+k-1)/k; 
+            hours+=ceil((double)num/k); 
         return hours<=h;
     }
     int minEatingSpeed(vector<int>& piles,int h) {
