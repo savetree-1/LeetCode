@@ -1,34 +1,29 @@
-/*
-By   :: savetrees
-Used :: Binary Search
-*/
 class Solution {
 public:
-    int isValid(int check,vector<int>& weights,int days) {
-        int count=1,pre=0;
-        for (int num : weights) {
-            pre+=num;
-            if (pre>check) {
-                count++;
-                pre=num;
-            }
+    bool check(vector<int>&weights,int days,int maxi)
+    {
+        int d=1;
+        int sum=0;
+        for(int num:weights)
+        {
+            if(num>maxi)return false;
+            if(sum+num>maxi){d++;sum=num;}
+            else sum+=num;
         }
-        return count;
+        return d<=days;
     }
-    
-    int shipWithinDays(vector<int>& weights,int days) {
-        int maxi=0,sum=0;
-        for (int num:weights) {
-            maxi=max(maxi,num);
-            sum+=num;
+    int shipWithinDays(vector<int>& weights, int days) {
+       int low=1;int high=accumulate(weights.begin(),weights.end(),0);
+       int ans=0;
+       while(low<=high)
+       {
+        int mid=low+(high-low)/2;
+        if(check(weights,days,mid)){
+            ans=mid;
+            high=mid-1;
         }
-        int low=maxi,high=sum;
-        while (low<=high) {
-            int mid=low+(high-low)/2;
-            int dummy=isValid(mid,weights,days);
-            if (dummy>days)low=mid+1;
-            else high=mid-1;
-        }
-        return low;
+        else low=mid+1;
+       } 
+       return ans;
     }
 };
