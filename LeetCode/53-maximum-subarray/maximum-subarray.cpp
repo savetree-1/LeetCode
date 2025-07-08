@@ -1,13 +1,19 @@
 class Solution {
 public:
+    int solve(vector<int>&nums,int i,vector<int>&dp)
+    {
+        if(i==0)return dp[0]=nums[0];
+        if(dp[i]!=INT_MIN)return dp[i];
+        int prev=solve(nums,i-1,dp);
+        return dp[i]=max(nums[i],nums[i]+prev);
+    }
     int maxSubArray(vector<int>& nums) {
-        int maxi=nums[0];
-        int curr=nums[0];
-        for(int i=1;i<nums.size();i++)
+        vector<int>dp(nums.size(),INT_MIN);
+        int res=nums[0];
+        for(int i=0;i<nums.size();i++)
         {
-            curr=max(nums[i],curr+nums[i]);
-            maxi=max(maxi,curr);
+            res=max(res,solve(nums,i,dp));
         }
-        return maxi;
+        return res;
     }
 };
