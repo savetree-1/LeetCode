@@ -1,20 +1,13 @@
 class Solution {
 public:
     int numSquares(int n) {
-        vector<int>nums;
+        while(n%4==0)n/=4;
+        if(n%8==7)return 4;
+        if(sqrt(n)==(int)sqrt(n))return 1;
         for(int i=1;i*i<=n;i++)
         {
-            nums.push_back(i*i);        
+            if(sqrt(n-i*i)==(int)sqrt(n-i*i))return 2;
         }
-        vector<int>dp(n+1,n+1);
-        dp[0]=0;
-        for(int i=1;i<=n;i++)
-        {
-            for(int num:nums)
-            {
-                if(i-num>=0)dp[i]=min(dp[i],1+dp[i-num]);
-            }
-        }
-        return dp[n]>n?-1:dp[n];
+        return 3;
     }
 };
