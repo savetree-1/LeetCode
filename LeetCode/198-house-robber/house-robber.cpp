@@ -1,15 +1,22 @@
 class Solution {
 public:
-    int solve(vector<int>&num,vector<int>&dp,int i)
+    int func(int i,vector<int>&nums)
     {
-        if(i<0)return 0;
-        if(i==0)return num[0];
-        if(dp[i]!=-1)return dp[i];
-        return dp[i]=max(solve(num,dp,i-1),solve(num,dp,i-2)+num[i]);
+        if(i==0)return nums[0];
+        int prev=nums[0];
+        int prev2=0;
+        for(int i=1;i<nums.size();i++)
+        {
+            int pick=nums[i];
+            if(i>1)pick+=prev2;
+            int not_=prev;
+            int res=max(not_,pick);
+            prev2=prev;
+            prev=res;
+        }
+        return prev;
     }
-    int rob(vector<int>& nums){
-        int n=nums.size();
-        vector<int>dp(n+1,-1);
-        return solve(nums,dp,n-1);
+    int rob(vector<int>& nums) {
+        return func(nums.size()-1,nums);
     }
 };
