@@ -1,6 +1,6 @@
 class Solution {
 public:
-    int func(vector<int>&nums,int i)
+    int rob(vector<int>& nums)
     {
         vector<int>dp(nums.size(),-1);
         dp[0]=nums[0];
@@ -10,11 +10,5 @@ public:
         int not_pick=dp[i-1];
         dp[i]=max(pick,not_pick);}
         return dp[nums.size()-1];
-    }
-    int rob(vector<int>& nums)
-    {
-        int n=nums.size();
-        //vector<int>dp(n+1,-1);
-        return func(nums,n-1);
     }
 };
