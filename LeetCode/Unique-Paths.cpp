@@ -1,25 +1,19 @@
 class Solution {
 public:
-    int func(int i,int j,int m,int n,vector<vector<int>>&dp)
-    {
-        if(i==m-1 && j==n-1)return 1;
-        if(i>=m || j>=n)return 0;
-        if(dp[i][j]!=-1)return dp[i][j];
-        return dp[i][j]=func(i+1,j,m,n,dp) +func(i,j+1,m,n,dp);
-    }
     int uniquePaths(int m, int n) {
-        vector<vector<int>>dp(m,vector<int>(n,-1));
+        vector<int>prev(n,0);
         for(int i=0;i<m;i++)
         {
+            vector<int>curr(n,0);
             for(int j=0;j<n;j++)
             {
-                if(i==0||j==0)dp[i][j]=1;
-                else
-                {
-                    dp[i][j]=dp[i-1][j]+dp[i][j-1];
-                }
-            }
+                if(i==0|| j==0)curr[j]=1;
+                else{
+                if(i>0)curr[j]+=prev[j];
+                if(j>0)curr[j]+=curr[j-1];
+            }}
+            prev=curr;
         }
-        return dp[m-1][n-1];
+        return prev[n-1];
     }
 };
