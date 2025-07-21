@@ -2,18 +2,17 @@ class Solution {
 public:
     int minimumTotal(vector<vector<int>>& tri) {
         int m=tri.size();
-        vector<vector<int>>dp(m,vector<int>(m,INT_MAX));
-        for(int j=0;j<m;j++)
-        {
-            dp[m-1][j]=tri[m-1][j];
-        }
+        vector<int>prev(m,0);
+        for(int i=0;i<m;i++)prev[i]=tri[m-1][i];
         for(int i=m-2;i>=0;i--)
         {
+            vector<int>curr(m,0);
             for(int j=i;j>=0;j--)
             {
-                dp[i][j]=tri[i][j]+min(dp[i+1][j+1],dp[i+1][j]);
+                curr[j]=tri[i][j]+min(prev[j+1],prev[j]);
             }
+            prev=curr;
         }
-        return dp[0][0];
+        return prev[0];
     }
 };
