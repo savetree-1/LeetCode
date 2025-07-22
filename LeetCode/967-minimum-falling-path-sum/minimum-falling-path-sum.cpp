@@ -1,24 +1,19 @@
 class Solution {
 public:
-    int func(int i,int j,int n,vector<vector<int>>&matrix,vector<vector<int>>&dp)
-    {
-        if(j<0 || j>=n)return INT_MAX;
-        if(i==n-1)return matrix[i][j];
-        if(dp[i][j]!=-101)return dp[i][j];
-        int down=func(i+1,j,n,matrix,dp);
-        int diaright=func(i+1,j+1,n,matrix,dp);
-        int dialeft=func(i+1,j-1,n,matrix,dp);
-        return dp[i][j]=matrix[i][j]+min({down,diaright,dialeft});
-        }
-    int minFallingPathSum(vector<vector<int>>& matrix) {
+    int minFallingPathSum(vector<vector<int>>& matrix){
         int n=matrix.size();
-        int mini=INT_MAX;
-        vector<vector<int>>dp(n,vector<int>(n,-101));
-        for(int i=0;i<n;i++)
+        vector<vector<int>>dp(n,vector<int>(n,INT_MAX));
+        for(int i=0;i<n;i++)dp[n-1][i]=matrix[n-1][i];
+        for(int i=n-2;i>=0;i--)
         {
-            int res=func(0,i,n,matrix,dp);
-            mini=min(res,mini);
+            for (int j=n-1;j>=0;j--)
+            {
+                int down=dp[i+1][j];
+                int left=(j>0)?dp[i+1][j-1]:INT_MAX;
+                int right=(j<n-1)?dp[i+1][j+1]:INT_MAX;
+                dp[i][j]=matrix[i][j]+min({down,left,right});
+            }
         }
-        return mini;
+        return *min_element(dp[0].begin(),dp[0].end());
     }
 };
