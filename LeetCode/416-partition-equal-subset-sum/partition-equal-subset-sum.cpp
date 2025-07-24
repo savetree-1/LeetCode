@@ -1,3 +1,4 @@
+//Ritiiiiiii
 class Solution {
 public:
     bool func(vector<int>&arr,int sum)
