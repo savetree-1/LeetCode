@@ -21,7 +21,7 @@ public:
                 }
                 else
                 {
-                    lps[len]=0;
+                    lps[i]=0;
                     i++;
                 }
             }
@@ -50,6 +50,5 @@ public:
             }
         }
         return -1;
-
     }
 };
