@@ -4,17 +4,25 @@ public:
         int cnt=0;
         int rows=grid.size();
         int cols=grid[0].size();
-        int i=rows-1;
-        int j=0;
-        while(i>=0 && j<cols)
+        for(int i=0;i<rows;i++)
         {
-            if(grid[i][j]<0)
+            int low=0;
+            int high=cols-1;
+            int ans=cols;
+            while(low<=high)
             {
-                cnt+=cols-j;
-                i--;
+                int mid=low+(high-low)/2;
+                if(grid[i][mid]<0)
+                {
+                    ans=mid;
+                    high=mid-1;
+                }
+                else
+                {
+                    low=mid+1;
+                }
             }
-            else
-            j++;
+            cnt+=cols-ans;
         }
         return cnt;
     }
