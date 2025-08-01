@@ -1,10 +1,28 @@
 class Solution {
 public:
     int thirdMax(vector<int>& nums) {
-        sort(nums.begin(),nums.end());
-        set<int>st(nums.begin(),nums.end());
-        vector<int>temp(st.begin(),st.end());
-        if(temp.size()<3)return temp.back();
-        else return temp[temp.size()-3];
+        long long maxi=LONG_MIN;
+        long long secmaxi=LONG_MIN;
+        long long thirdmaxi=LONG_MIN;
+        for(int i=0;i<nums.size();i++)
+        {
+            if(nums[i]>maxi)
+            {
+                thirdmaxi=secmaxi;
+                secmaxi=maxi;
+                maxi=nums[i];
+            }
+            else if(nums[i]>secmaxi && nums[i]<maxi)
+            {
+                thirdmaxi=secmaxi;
+                secmaxi=nums[i];
+            }
+            else if(nums[i]>thirdmaxi && nums[i]<secmaxi)
+            {
+                thirdmaxi=nums[i];
+            }
+        }
+        if(thirdmaxi!=LONG_MIN)return thirdmaxi;
+        else return maxi;
     }
 };
