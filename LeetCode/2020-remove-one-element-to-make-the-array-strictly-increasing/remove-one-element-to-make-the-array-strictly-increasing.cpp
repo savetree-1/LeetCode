@@ -1,13 +1,16 @@
 class Solution {
 public:
     bool canBeIncreasing(vector<int>& nums) {
-        int removed = 0;
-        for(int i = 1; i < nums.size(); ++i) {
-            if(nums[i] <= nums[i - 1]) {
-                removed++;
-                if(removed > 1) return false;
-                if(i > 1 && nums[i] <= nums[i - 2])
-                    nums[i] = nums[i - 1];
+        if(nums.size()==2)return true;
+        int count=0;
+        int prev=nums[0];
+        for(int i=1;i<nums.size();i++)
+        {
+            if(nums[i]<=nums[i-1])
+            {
+                count++;
+            if(count>1)return false;
+            if(i>1 && nums[i]<=nums[i-2])nums[i]=nums[i-1];
             }
         }
         return true;
