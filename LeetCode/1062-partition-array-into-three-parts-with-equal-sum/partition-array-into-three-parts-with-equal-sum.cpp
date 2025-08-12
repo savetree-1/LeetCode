@@ -15,15 +15,14 @@ public:
         int currSum = 0;
         int partsFound = 0;
         
-        for(int i = 0; i < n; i++) {
-            currSum += arr[i];
-            if(currSum == target) {
+        for(int i =0;i< n;i++) {
+            currSum+=arr[i];
+            if(currSum==target) {
                 partsFound++;
-                currSum = 0;
-                if(partsFound == 2 && i < n - 1) return true;
+                currSum=0;
+                if(partsFound==2&&i<n-1)return true;
             }
         }
-        
         return false;
     }
 };
