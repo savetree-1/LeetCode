@@ -1,24 +1,26 @@
 class Solution {
 public:
     bool canThreePartsEqualSum(vector<int>& arr) {
-        int n=arr.size();
-        int sum=accumulate(arr.begin(), arr.end(), 0);
-        if(sum %3!=0) return false;
-        int target=sum/3;
-        vector<int>forw;
-        int sum1=arr[0];
-        forw.push_back(sum1);
-        for(int i=1;i<n;i++) {
-            sum1+=arr[i];
-            forw.push_back(sum1);
+        int n = arr.size();
+        int sum = accumulate(arr.begin(), arr.end(), 0);
+        if(sum % 3 != 0) return false;
+        int target = sum / 3;
+        
+        int count = 0;
+        for(int i = 0; i < n; i++) {
+            if(arr[i] == 0) count++;
         }
-        for(int i=0;i<n-2;i++) {
-            if(forw[i]==target) {
-                for(int j=i+1;j<n-1;j++) {
-                    if(forw[j]-forw[i]==target&&sum-forw[j]==target) {
-                        return true;
-                    }
-                }
+        if(count == n - 1) return true;
+
+        int currSum = 0;
+        int partsFound = 0;
+        
+        for(int i =0;i< n;i++) {
+            currSum+=arr[i];
+            if(currSum==target) {
+                partsFound++;
+                currSum=0;
+                if(partsFound==2&&i<n-1)return true;
             }
         }
         return false;
