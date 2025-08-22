@@ -11,17 +11,17 @@ public:
                 temp++;
             }
             left++;
-            for(int idx =left; idx <= right && temp <= count; idx++){
+            for(int idx =left;idx<=right&&temp<=count;idx++){
                 matrix[idx][bottom] = temp;
                 temp++;
             }
             bottom--;
-            for(int idx = bottom; idx >= top && temp <= count; idx--){
+            for(int idx = bottom;idx>=top&&temp<=count;idx--){
                 matrix[right][idx] = temp;
                 temp++;
             }
             right--;
-            for(int idx = right; idx >= left && temp <= count; idx--){
+            for(int idx = right;idx>=left&&temp<=count;idx--){
                 matrix[idx][top] = temp;
                 temp++;
             }
