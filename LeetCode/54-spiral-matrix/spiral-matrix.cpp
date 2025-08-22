@@ -12,4 +12,3 @@ public:
         if(top<=bottom)for(int i=right;i>=left;i--)s.push_back(arr[bottom][i]);bottom--;
         if(left<=right)for(int i=bottom;i>=top;i--)s.push_back(arr[i][left]);left++;}
     return s;  }};
-
