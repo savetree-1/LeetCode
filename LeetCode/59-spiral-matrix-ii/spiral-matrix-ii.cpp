@@ -1,31 +1,31 @@
 class Solution {
 public:
     vector<vector<int>> generateMatrix(int n) {
-        vector<vector<int>> matrix(n, vector<int>(n));
+        vector<vector<int>>matrix(n, vector<int>(n));
         int count = n*n;
-        int startRow = 0, startCol = 0, endRow = n-1, endCol = n-1;
-        int temp = 1;
+        int left=0,top=0,right= n-1,bottom= n-1;
+        int temp=1;
         while(temp <= count){
-            for(int idx = startCol; idx <= endCol && temp <= count; idx++){
-                matrix[startRow][idx] = temp;
+            for(int idx = top; idx <= bottom && temp <= count; idx++){
+                matrix[left][idx]=temp;
                 temp++;
             }
-            startRow++;
-            for(int idx = startRow; idx <= endRow && temp <= count; idx++){
-                matrix[idx][endCol] = temp;
+            left++;
+            for(int idx =left; idx <= right && temp <= count; idx++){
+                matrix[idx][bottom] = temp;
                 temp++;
             }
-            endCol--;
-            for(int idx = endCol; idx >= startCol && temp <= count; idx--){
-                matrix[endRow][idx] = temp;
+            bottom--;
+            for(int idx = bottom; idx >= top && temp <= count; idx--){
+                matrix[right][idx] = temp;
                 temp++;
             }
-            endRow--;
-            for(int idx = endRow; idx >= startRow && temp <= count; idx--){
-                matrix[idx][startCol] = temp;
+            right--;
+            for(int idx = right; idx >= left && temp <= count; idx--){
+                matrix[idx][top] = temp;
                 temp++;
             }
-            startCol++;
+            top++;
         }
         return matrix;
     }
