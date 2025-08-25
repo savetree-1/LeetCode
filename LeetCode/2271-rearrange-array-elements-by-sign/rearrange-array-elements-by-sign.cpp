@@ -1,4 +1,3 @@
-#include <vector>
 class Solution {
 public:
     vector<int> rearrangeArray(const std::vector<int>& nums) {
