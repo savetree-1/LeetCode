@@ -1,40 +1,41 @@
 class Solution {
 public:
-    vector<vector<int>> sortMatrix(vector<vector<int>>& grid) {
-        int n = grid.size();
-        
-        // bottom-left including main diagonal
-        for(int i=0;i<n;i++){
+    vector<vector<int>> sortMatrix(vector<vector<int>>& grid) { int n=grid[0].size();
+       
+       for(int i=0;i<n;i++)
+       {
+            int row=i,col=0; 
             vector<int>diag;
-            int r=i, c=0;
-            while(r<n && c<n){
-                diag.push_back(grid[r][c]);
-                r++; c++;
+            while(row<n && col<n)
+            {
+                diag.push_back(grid[row][col]);
+                row++;col++;
             }
-            sort(diag.begin(), diag.end(), greater<int>()); // descending
-            r=i; c=0; int k=0;
-            while(r<n && c<n){
-                grid[r][c]=diag[k++];
-                r++; c++;
+            sort(diag.begin(),diag.end(),greater <int>());
+            row=i,col=0;int k=0;
+            while(row<n && col<n)
+            {
+                grid[row][col]=diag[k++];
+                row++;col++;
             }
-        }
-        
-        // top-right (excluding main diagonal)
-        for(int j=1;j<n;j++){
+       }
+       for(int i=1;i<n;i++)
+       {
+            int row=0,col=i; 
             vector<int>diag;
-            int r=0, c=j;
-            while(r<n && c<n){
-                diag.push_back(grid[r][c]);
-                r++; c++;
+            while(row<n && col<n)
+            {
+                diag.push_back(grid[row][col]);
+                row++;col++;
             }
-            sort(diag.begin(), diag.end()); // ascending
-            r=0; c=j; int k=0;
-            while(r<n && c<n){
-                grid[r][c]=diag[k++];
-                r++; c++;
+            sort(diag.begin(),diag.end());
+            row=0,col=i;int k=0;
+            while(row<n && col<n)
+            {
+                grid[row][col]=diag[k++];
+                row++;col++;
             }
-        }
-        
-        return grid;
+       }
+       return grid;
     }
 };
