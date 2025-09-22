@@ -10,7 +10,7 @@ public:
                 int l=low,r=low;
                 while(l > 0&&arr[l-1]<arr[l])l--;
                 while(r<n-1&&arr[r]>arr[r+1])r++;
-                ans=max(ans, r - l + 1);
+                ans=max(ans,r-l+1);
                 low=r; 
             } else {
                 low++;
