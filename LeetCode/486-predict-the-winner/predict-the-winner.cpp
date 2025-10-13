@@ -1,14 +1,11 @@
 class Solution {
+    bool checkWin(int ans,int total){
+	   return ans>=total-ans;}
+    int maxScore(vector<int>&A,int total,int i,int j){
+        if(i>j)return 0;
+      return total-min(maxScore(A,total-A[i],i+1,j),maxScore(A,total-A[j],i,j-1));}
 public:
     bool predictTheWinner(vector<int>& nums) {
-        int n = nums.size();
-        vector<int> dp(n);
-        for (int i = n - 1; i >= 0; i--) {
-            dp[i] = nums[i];
-            for (int j = i + 1; j < n; j++) {
-                dp[j] = max(nums[i] - dp[j], nums[j] - dp[j - 1]);
-            }
-        }
-        return dp[n - 1] >= 0;
-    }
-};
+        int total=0; 
+        for(auto x:nums)total+=x;
+        return checkWin(maxScore(nums,total,0,nums.size()-1),total);}};
