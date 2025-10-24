@@ -65,7 +65,7 @@ public:
     {
         int count=1;
         string temp=a;
-        while (a.length() < b.length()){
+        while(a.length() < b.length()){
         a+=temp;
         count++;
         }
