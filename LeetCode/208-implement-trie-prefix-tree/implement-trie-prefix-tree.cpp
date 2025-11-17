@@ -1,59 +1,44 @@
-/*
-By   :: savetree
-Used :: Trie
-*/
-
-class Trie
-{
+class Trie {
+private:
     struct Node{
-        Node* links[26]={};
-        bool isEnd=false;
-    };
-    Node* root;
+        Node* next[26];
+        bool end;
+        Node()
+        {
+            end=false;
+            for(int i=0;i<26;i++)next[i]=nullptr;
+        }};
+        Node* root;
 public:
-    Trie()
-    {
-        root=new Node();    
-    }
-    void insert(string word)
-    {
-        Node* node=root;
-        for(char ch:word)
+    Trie() {
+        root= new Node();}
+    void insert(string word) {
+        Node* curr=root;
+        for(char c:word)
         {
-            int idx=ch-'a';
-            if(!node->links[idx])
-            {
-                node->links[idx]=new Node();
-            }
-            node=node->links[idx];
+            int idx=c-'a';
+            if(!curr->next[idx])curr->next[idx]=new Node();
+            curr=curr->next[idx];
         }
-        node->isEnd=true;
+        curr->end=true;
     }
-    bool search(string word)
-    {
-        Node* node=root;
-        for(char ch:word)
+    bool search(string word) {   
+        Node *curr=root;
+        for(char c:word)
         {
-            int idx=ch-'a';
-            if(!node->links[idx])
-            {
-                return false;
-            }
-            node=node->links[idx];
+            int idx=c-'a';
+            if(!curr->next[idx])return false;
+            curr=curr->next[idx];
         }
-        return node->isEnd;
+        return curr->end;
     }
-    bool startsWith(string prefix)
-    {
-        Node* node=root;
-        for(char ch:prefix)
+    bool startsWith(string prefix) {
+        Node* curr= root;
+        for(char c: prefix)
         {
-            int idx=ch-'a';
-            if(!node->links[idx])
-            {
-                return false;
-            }
-            node=node->links[idx];
+            int idx=c-'a';
+            if(!curr->next[idx])return false;
+            curr=curr->next[idx];
         }
         return true;
     }
