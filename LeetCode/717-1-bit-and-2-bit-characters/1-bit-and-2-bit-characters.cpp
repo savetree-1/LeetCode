@@ -1,19 +1,16 @@
 class Solution {
 public:
     bool isOneBitCharacter(vector<int>& bits) {
-        if(bits.size()==1)
+        int n= bits.size();
+        if (bits[n-1]!=0)return false;
+        for(int i=0;i<bits.size();i++)
         {
-            if(bits[0]==0)return true;
-            return false;
+            if(i==n-1 && bits[i]==0)return true;
+            if(bits[i]==1 && (bits[i+1]==1||bits[i+1]==0))
+            {
+                i++;
+            }
         }
-        int i=0;
-        while(i<bits.size())
-        {
-            if(bits[i]==1)i+=2;
-            else i++;
-            if(i==bits.size()-1 && bits[i]==0)return true;
-        }  
-        if(i<bits.size())return true;
         return false;
     }
-};
+};               
