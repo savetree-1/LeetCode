@@ -1,12 +1,18 @@
 class Solution {
 public:
     int findClosestNumber(vector<int>& nums) {
-        int ans = nums[0];
-        for (int x : nums) {
-            if (abs(x) < abs(ans) || (abs(x) == abs(ans) && x > ans)) {
-                ans = x;
+        int diff=INT_MAX;
+        for(int num:nums)
+        {
+            if(abs(num-0)<abs(diff))
+            {
+                diff=num-0;
+            }
+            else if(abs(num-0)==abs(diff))
+            {
+                diff=max(diff,num-0);          
             }
         }
-        return ans;
+        return diff;
     }
 };
