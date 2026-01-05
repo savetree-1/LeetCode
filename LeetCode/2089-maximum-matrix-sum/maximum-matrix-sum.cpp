@@ -10,7 +10,7 @@ public:
         {
             for(int j=0;j<cols;j++)
             {
-                if(matrix[i][j]<0)
+                if(matrix[i][j]<1)
                 {
                     cnt++;
                 }
