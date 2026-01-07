@@ -5,7 +5,7 @@ public:
     long long maxProduc = 0;
     long long dfsSum(TreeNode* root) {
         if (!root) return 0;
-        return root->val + dfsSum(root->left) + dfsSum(root->right);
+        return  dfsSum(root->left) +root->val + dfsSum(root->right);
     }
 
     long long dfsProduct(TreeNode* root) {
