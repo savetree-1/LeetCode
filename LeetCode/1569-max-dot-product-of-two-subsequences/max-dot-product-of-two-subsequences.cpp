@@ -8,7 +8,6 @@ public:
         for(int i = 1; i <= n; i++) {
             for(int j = 1; j <= m; j++) {
                 int prod = nums1[i-1] * nums2[j-1];
-
                 int take = prod;
                 if (dp[i-1][j-1] != INT_MIN)
                     take = max(take, prod + dp[i-1][j-1]);
