@@ -6,11 +6,11 @@ public:
         int n=nums.size();
         int low=0;
         int best=0;
-        for (int high=0;high<n;high++) {
-            while((ll)nums[high]>(ll)nums[low]*k) {
+        for (int i=0;i<n;i++) {
+            while((ll)nums[i]>(ll)nums[low]*k) {
                 low++;
             }
-            best=max(best,high-low+1);
+            best=max(best,i-low+1);
         }
         return n-best;
     }
