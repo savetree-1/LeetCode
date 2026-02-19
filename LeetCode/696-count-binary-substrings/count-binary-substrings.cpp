@@ -7,10 +7,11 @@ public:
             if (s[i]==s[i-1]) cur++;
             else{
                 cnt+=min(cur, prev);
-                prev=exchange(cur, 1);// same as prev=cur, cur=1
+                prev = cur;
+                cur = 1;
             }
         }
-        cnt+=min(cur, prev);// add the tail
+        cnt+=min(cur, prev);
         return cnt;
     }
 };
