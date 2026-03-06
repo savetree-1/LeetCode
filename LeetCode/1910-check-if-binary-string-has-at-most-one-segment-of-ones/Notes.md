@@ -1,1 +1,1 @@
-<h2>check-if-binary-string-has-at-most-one-segment-of-ones Notes</h2><hr>[ Time taken: 1 hr 13 m 51 s ]
+<h2>check-if-binary-string-has-at-most-one-segment-of-ones Notes</h2><hr>[ Time taken: 6d 3hrs 28m 2s ]
