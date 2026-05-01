@@ -1,19 +1,15 @@
 class Solution {
 public:
-    int solve(vector<int>&nums,int i,vector<int>&dp)
-    {
-        if(i==0)return dp[0]=nums[0];
-        if(dp[i]!=INT_MIN)return dp[i];
-        int prev=solve(nums,i-1,dp);
-        return dp[i]=max(nums[i],nums[i]+prev);
-    }
     int maxSubArray(vector<int>& nums) {
-        vector<int>dp(nums.size(),INT_MIN);
-        int res=nums[0];
-        for(int i=0;i<nums.size();i++)
+        int n=nums.size();
+        vector<int>dp(n);
+        dp[0]=nums[0];
+        int maxi=dp[0];
+        for(int i=1;i<n;i++)
         {
-            res=max(res,solve(nums,i,dp));
+            dp[i]=max(nums[i],nums[i]+dp[i-1]);
+            maxi=max(maxi,dp[i]);
         }
-        return res;
+        return maxi;
     }
 };
