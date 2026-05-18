@@ -1,19 +1,63 @@
 class Solution {
 public:
-    int strStr(string haystack, string needle) {
-        int n=haystack.size();
-        int m=needle.size();
-        for(int i=0;i<=n-m;i++)
+    vector<int>lps(string pat)
+    {
+        int m=pat.size();
+        vector<int>lps(m,0);
+        int len=0;
+        int i=1;
+        while(i<m)
         {
-            int j;
-            for(j=0;j<m;j++)
+            if(pat[i]==pat[len])
             {
-                if(haystack[i+j]!=needle[j])
+                len++;
+                lps[i]=len;
+                i++;
+            }
+            else
+            {
+                if(len!=0)
                 {
-                    break;
+                    len=lps[len-1];
+                }
+                else
+                {
+                    lps[i]=0;
+                    i++;
                 }
             }
-            if(j==m)return i;
+        }
+        return lps;
+    }
+    int strStr(string txt, string pat)
+    {
+        int n=txt.size();
+        int m=pat.size();
+        vector<int>arr=lps(pat);
+        int i=0;
+        int j=0;
+        while(i<n)
+        {
+            if(txt[i]==pat[j])
+            {
+                i++;
+                j++;
+            }
+            if(j==m)
+            {
+                return i-j;
+            }
+            else if(i<n && txt[i]!=pat[j])
+            {
+                if(j!=0)
+                {
+                    j=arr[j-1];
+                }
+                else
+                {
+                    i++;
+                }
+            }
         }
         return -1;
     }
